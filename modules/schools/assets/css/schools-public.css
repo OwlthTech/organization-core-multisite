@@ -1,0 +1,142 @@
+/* Real-time validation feedback */
+.form-control.is-valid {
+    border-color: #28a745;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.phone-input:focus,
+.email-input:focus,
+.url-input:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+/* ============================================
+   SCROLL-TO-ERROR ANIMATIONS & EFFECTS
+   ============================================ */
+
+/* Shake animation for error fields */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+    20%, 40%, 60%, 80% { transform: translateX(10px); }
+}
+
+/* Pulse animation for error highlight */
+@keyframes pulse-error {
+    0% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.7); }
+    50% { box-shadow: 0 0 0 10px rgba(220, 53, 69, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(220, 53, 69, 0); }
+}
+
+/* Apply shake animation to error fields */
+.form-control.shake-error {
+    animation: shake 0.5s;
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+/* Highlight error field with pulsing border */
+.form-control.highlight-error {
+    animation: pulse-error 1s;
+    border-width: 2px;
+}
+
+/* Smooth scroll offset for sticky headers */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px; /* Adjust based on your header height */
+}
+
+/* Error field container highlight */
+.error-field-container {
+    padding: 10px;
+    margin: -10px;
+    border-radius: 8px;
+    background-color: rgba(220, 53, 69, 0.05);
+    transition: all 0.3s ease;
+}
+
+/* Error message slide-in animation */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert.error-alert {
+    animation: slideInDown 0.4s ease-out;
+}
+
+/* Error counter badge */
+.error-count-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    background: #dc3545;
+    color: white;
+    border-radius: 12px;
+    font-size: 0.875rem;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+/* Sticky error summary bar */
+.error-summary-bar {
+    position: fixed;
+    top: 80px; /* Below header */
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+    color: white;
+    padding: 12px 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+    animation: slideInDown 0.5s ease-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.error-summary-bar .error-list {
+    flex: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.error-summary-bar .error-list li {
+    display: inline;
+    margin-right: 20px;
+    font-size: 0.9rem;
+}
+
+.error-summary-bar .close-btn {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.error-summary-bar .close-btn:hover {
+    background: rgba(255,255,255,0.3);
+}

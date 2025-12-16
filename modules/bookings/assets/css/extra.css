@@ -1,0 +1,179 @@
+.mus-centered-wrapper {
+    display: flex;
+    min-height: 70vh;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.mus-centered-content {
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mus-error-message,
+.mus-info-message {
+    padding: 20px;
+    border-radius: 5px;
+    margin: 20px 0;
+}
+
+.mus-error-message {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.mus-info-message {
+    background-color: #d1ecf1;
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+.mus-error-message .nir-btn,
+.mus-info-message .nir-btn {
+    margin-top: 15px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007cba;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.mus-centered-content h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+
+
+
+
+
+
+/* add school css */
+
+     input[type="text"],
+     input[type="email"],
+     input[type="tel"],
+     input[type="number"],
+     select,
+     textarea {
+        color: #333333 !important;
+        background-color: #ffffff !important;
+        border: 1px solid #ddd !important;
+    }
+
+     select option {
+        color: #333333 !important;
+        background-color: #ffffff !important;
+    }
+
+     input::placeholder {
+        color: #666666 !important;
+    }
+
+     .form-label {
+        color: #333333 !important;
+        font-weight: 500;
+    }
+
+     .section-title {
+        border-radius: 5px;
+    }
+
+    .context-badge {
+        background-color: rgba(255, 255, 255, 0.2);
+        padding: 4px 12px;
+        border-radius: 15px;
+        font-size: 0.9em;
+        margin-top: 5px;
+        display: inline-block;
+    }
+
+    .booking-context {
+        background: linear-gradient(45deg, #28a745, #20c997);
+    }
+
+    .account-context {
+        background: linear-gradient(45deg, #007bff, #6f42c1);
+    }
+
+.location-options .option-card,
+.school-options .option-card,
+.date-options .option-card {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+}
+
+.option-card .form-check-input {
+    flex-shrink: 0 !important;
+    margin-top: 3px !important;
+}
+
+.option-card .form-check-label {
+    flex: 1 !important;
+}
+
+.option-card .form-check-label strong {
+    word-wrap: break-word !important;
+    word-break: break-word !important;
+}
+
+
+/* ========================================
+   ACTIVE STEP NUMBER - FORCE WHITE COLOR
+   ======================================== */
+
+.sw-theme-dots .nav .nav-link.active .num {
+    color: #ffffff !important;
+}
+
+/* Extra specificity for stubborn themes */
+.multistep-container .sw-theme-dots .nav .nav-link.active .num,
+.booking-section .sw .nav .nav-link.active .num {
+    color: #ffffff !important;
+}
+
+/* =====================================================
+   CRITICAL OVERRIDE FOR SMARTWIZARD MINIFIED CSS
+   Must be loaded AFTER smart_wizard_all.min.css
+   ===================================================== */
+
+/* Force horizontal on mobile - Override minified CSS */
+@media screen and (max-width: 640px) {
+    body .sw > .nav,
+    body .sw .nav,
+    html body .multistep-container .sw .nav {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+    }
+    
+    /* Force horizontal progress bar */
+    body .sw-theme-dots > .nav::before {
+        top: 18px !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 5px !important;
+    }
+    
+    body .sw-theme-dots > .nav-progress::after {
+        top: 18px !important;
+        left: 0 !important;
+        width: var(--sw-progress-width) !important;
+        height: 5px !important;
+    }
+}
+
+/* Force white number on active step */
+html body .sw-theme-dots .nav .nav-link.active .num {
+    color: #ffffff !important;
+}

@@ -1,0 +1,51 @@
+/* Media Preview Items */
+.media-preview-item {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+}
+
+.media-preview-item img {
+    max-width: 80px;
+    max-height: 80px;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    display: block;
+}
+
+.media-preview-item .remove-media {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #dc3232;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+    padding: 0;
+    transition: background 0.2s;
+}
+
+.media-preview-item .remove-media:hover {
+    background: #a00;
+}
+
+.media-preview-container {
+    min-height: 40px;
+    padding: 10px;
+    background: #f9f9f9;
+    border: 1px dashed #ddd;
+    border-radius: 4px;
+}
+
+.media-preview-container:empty {
+    display: none;
+}
+
+.media-preview-container:not(:empty) {
+    display: flex !important;
+}

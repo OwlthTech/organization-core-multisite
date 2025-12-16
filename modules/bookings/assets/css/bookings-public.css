@@ -1,0 +1,43 @@
+/* Booking Form Public Styles */
+.organization-core-booking-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.organization-core-booking-form .form-group {
+    margin-bottom: 15px;
+}
+
+.organization-core-booking-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.organization-core-booking-form .required {
+    color: red;
+}
+
+.organization-core-booking-form .form-control {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.organization-core-booking-form .btn {
+    padding: 10px 20px;
+    background: #0073aa;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.organization-core-booking-form .btn:hover {
+    background: #005177;
+}

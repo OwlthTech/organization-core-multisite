@@ -1,0 +1,39 @@
+.room-cell {
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 600;
+    border-right: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+.room-count {
+    font-size: 11px;
+    color: #666;
+    font-weight: normal;
+    margin-bottom: 5px;
+}
+
+.room-actions {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.item-actions {
+    display: flex;
+    width: 100%;
+    gap: 8px;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-size: 20px;
+}
+
+#rooming-list-table th, #rooming-list-table td {
+    vertical-align: middle;
+}
+
+.delete-room-btn {
+    color: #a00;
+}

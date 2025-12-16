@@ -1,0 +1,220 @@
+/**
+ * Rooming List Public CSS
+ * Desktop unchanged, Mobile with vertical action buttons
+ */
+
+.rooming-list-public-section {
+    background-color: #f8f9fa;
+}
+
+.rooming-list-public-section .card {
+    border: none;
+    border-radius: 10px;
+}
+
+.rooming-list-public-section .card-header {
+    border-radius: 10px 10px 0 0 !important;
+    padding: 15px 20px;
+}
+
+.rooming-list-public-section .card-body {
+    padding: 25px;
+}
+
+/* Hotel Info Grid */
+.hotel-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 30px;
+}
+
+.hotel-info-grid .info-item {
+    display: flex;
+    gap: 8px;
+}
+
+.hotel-info-grid .info-item strong {
+    min-width: 100px;
+    color: #495057;
+}
+
+.hotel-info-grid .info-item span {
+    color: #212529;
+}
+
+/* Table styling */
+#rooming-list-table-public,
+.room-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#rooming-list-table-public thead th,
+.room-table thead th {
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+#rooming-list-table-public thead th:nth-child(1),
+.room-table thead th:nth-child(1) {
+    width: 40%;
+}
+
+#rooming-list-table-public thead th:nth-child(2),
+.room-table thead th:nth-child(2) {
+    width: 30%;
+}
+
+#rooming-list-table-public thead th:nth-child(3),
+.room-table thead th:nth-child(3) {
+    width: 30%;
+}
+
+#rooming-list-table-public tbody td,
+.room-table tbody td {
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    vertical-align: middle;
+}
+
+#rooming-list-table-public .widefat,
+.room-table .widefat {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+/* WordPress button styling */
+.button {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 2.15384615;
+    min-height: 30px;
+    margin: 0;
+    padding: 0 10px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.button-small {
+    padding: 0 8px;
+    min-height: 26px;
+    font-size: 11px;
+}
+
+/* Dashicons support */
+.dashicons {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet and below */
+@media (max-width: 992px) {
+    .rooming-list-public-section .card-body {
+        padding: 20px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .rooming-list-public-section .card-body {
+        padding: 10px;
+    }
+
+    /* Hotel info grid - single column on mobile */
+    .hotel-info-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* Table adjustments */
+    #rooming-list-table-public,
+    .room-table {
+        font-size: 14px;
+    }
+
+    #rooming-list-table-public thead th,
+    .room-table thead th {
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+
+    #rooming-list-table-public tbody td,
+    .room-table tbody td {
+        padding: 10px 8px;
+    }
+
+    /* Input fields */
+    #rooming-list-table-public .widefat,
+    .room-table .widefat {
+        font-size: 15px;
+        padding: 10px;
+        min-height: 42px;
+    }
+
+    /* Action buttons - VERTICAL STACK on mobile */
+    #rooming-list-table-public tbody td:last-child>div,
+    .room-table tbody td:last-child>div {
+        flex-direction: column !important;
+        gap: 6px !important;
+    }
+
+    #rooming-list-table-public tbody td:last-child button,
+    .room-table tbody td:last-child button {
+        width: 100%;
+        min-height: 36px;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 6px !important;
+        font-size: 13px;
+    }
+
+    #rooming-list-table-public tbody td:last-child .material-symbols-outlined,
+    .room-table tbody td:last-child .material-symbols-outlined {
+        font-size: 18px;
+    }
+
+    /* Bottom buttons - stack vertically */
+    .rooming-list-public-section [style*="display:flex; justify-content: space-between"] {
+        flex-direction: column !important;
+        gap: 12px !important;
+    }
+
+    .rooming-list-public-section [style*="display:flex; align-items: center; gap:10px"] {
+        flex-direction: column !important;
+        width: 100%;
+        gap: 10px !important;
+    }
+
+    .rooming-list-public-section .button,
+    .rooming-list-public-section .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        min-height: 46px;
+        font-size: 15px;
+    }
+}
