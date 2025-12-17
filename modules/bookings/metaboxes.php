@@ -55,6 +55,17 @@ class Booking_Details_Metaboxes
             'high'
         );
 
+        // Ensemble Details Metabox
+        add_meta_box(
+            'ensemble_details_meta',
+            __('Ensemble Details', 'organization-core'),
+            array($this, 'render_ensemble_details_metabox'),
+            $this->screen_id,
+            'normal',
+            'high'
+        );
+        
+
         // Sidebar: Customer Notes
         add_meta_box(
             'customer_notes_meta',
@@ -141,7 +152,7 @@ class Booking_Details_Metaboxes
         }
 
         $package = $booking['package_id'] ? get_post($booking['package_id']) : null;
-?>
+    ?>
         <table class="form-table" role="presentation">
             <tr>
                 <th><?php _e('Booking ID', 'organization-core'); ?>:</th>
@@ -249,6 +260,89 @@ class Booking_Details_Metaboxes
         </table>
     <?php
     }
+
+    /**
+     * Render ensemble details metabox
+     */
+    public function render_ensemble_details_metabox($post, $metabox)
+    {
+        $booking_id = isset($_GET['booking_id']) ? absint($_GET['booking_id']) : 0;
+        $booking = $this->booking_crud->get_booking($booking_id, get_current_blog_id());
+        // Decode ensemble_data JSON if exists
+        $ensemble_data = array();
+
+        // $booking['ensembles'] is an array of multiple ensembles, we need to handle that accordingly.
+
+        if (!empty($booking['ensembles'])) {
+            $ensemble_data = is_string($booking['ensembles'])
+                ? json_decode($booking['ensembles'], true)
+                : $booking['ensembles'];
+        }
+    ?>
+        <table class="form-table" role="presentation">
+            <?php if (!empty($ensemble_data) && is_array($ensemble_data)): ?>
+                <?php foreach ($ensemble_data as $index => $ensemble): ?>
+                    <?php // print_r($ensemble); ?>
+                    <!-- Array ( [ensemble_name] => Riverdale High School Concert Band [ensemble_type] => concert_band [director_email] => janderson@riverdalehssss.edu [ensemble_grade] => high [director_prefix] => mr [ensemble_students] => 45 [director_last_name] => Anderson [director_first_name] => James ) -->
+                    <tr border="1" style="background-color: #d5d5d5;">
+                        <th colspan="2" style="border-top: 2px solid #ccc; padding-top: 10px;">
+                            <?php printf(__('Ensemble %d', 'organization-core'), $index + 1); ?>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th><?php _e('Ensemble Name', 'organization-core'); ?>:</th>
+                        <td><?php echo esc_html($ensemble['ensemble_name'] ?? 'N/A'); ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php _e('Ensemble Type', 'organization-core'); ?>:</th>
+                        <td><?php echo esc_html(ucfirst(str_replace('_', ' ', $ensemble['ensemble_type'] ?? 'N/A'))); ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php _e('Director Name', 'organization-core'); ?>:</th>
+                        <td>
+                            <?php
+                            $prefix = isset($ensemble['director_prefix']) ? ucfirst($ensemble['director_prefix']) . ' ' : '';
+                            $first_name = isset($ensemble['director_first_name']) ? $ensemble['director_first_name'] . ' ' : '';
+                            $last_name = isset($ensemble['director_last_name']) ? $ensemble['director_last_name'] : '';
+                            echo esc_html($prefix . $first_name . $last_name) ?: 'N/A';
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><?php _e('Director Email', 'organization-core'); ?>:</th>
+                        <td>
+                            <?php
+                            if (!empty($ensemble['director_email'])):
+                            ?>
+                                <a href="mailto:<?php echo esc_attr($ensemble['director_email']); ?>">
+                                    <?php echo esc_html($ensemble['director_email']); ?>
+                                </a>
+                            <?php
+                            else:
+                                _e('N/A', 'organization-core');
+                            endif;
+                            ?>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><?php _e('Ensemble Grade', 'organization-core'); ?>:</th>
+                        <td><?php echo esc_html(ucfirst($ensemble['ensemble_grade'] ?? 'N/A')); ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php _e('Number of Students', 'organization-core'); ?>:</th>
+                        <td><?php echo intval($ensemble['ensemble_students'] ?? 0); ?></td>
+                    </tr>
+
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="2"><?php _e('No ensemble details available.', 'organization-core'); ?></td>
+                </tr>
+            <?php endif; ?>
+        </table>
+    <?php
+    }
+
 
     /**
      * Render hotel metabox
